@@ -3,9 +3,9 @@ let pause = document.getElementById('pause');
 let sessions = document.getElementById('sessions');
 let seconds;
 
-let bell = new Audio("https://github.com/Nmartins6/pomodoro-timer/blob/main/audio/bell.mp3");
-let focusReturn = new Audio("https://github.com/Nmartins6/pomodoro-timer/blob/main/audio/return.mp3");
-let final = new Audio("https://github.com/Nmartins6/pomodoro-timer/blob/main/audio/final.mp3");
+let bell = new Audio("https://vercel.com/nmartins6/pomodoro-timer/9dyzP3iVZ3FfPcUw1NYQCfMoQiH6/source?f=src%2Faudio%2Fbell.mp3");
+let focusReturn = new Audio("https://vercel.com/nmartins6/pomodoro-timer/9dyzP3iVZ3FfPcUw1NYQCfMoQiH6/source?f=src%2Faudio%2Ffinal.mp3");
+let final = new Audio("https://vercel.com/nmartins6/pomodoro-timer/9dyzP3iVZ3FfPcUw1NYQCfMoQiH6/source?f=src%2Faudio%2Freturn.mp3");
 
 function start() {
 
