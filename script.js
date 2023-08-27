@@ -3,9 +3,9 @@ let pause = document.getElementById('pause');
 let sessions = document.getElementById('sessions');
 let seconds;
 
-let bell = new Audio("https://vercel.com/nmartins6/pomodoro-timer/9dyzP3iVZ3FfPcUw1NYQCfMoQiH6/source/src/audio/bell.mp3");
-let focusReturn = new Audio("https://vercel.com/nmartins6/pomodoro-timer/9dyzP3iVZ3FfPcUw1NYQCfMoQiH6/source/src/audio/final.mp3");
-let final = new Audio("https://vercel.com/nmartins6/pomodoro-timer/9dyzP3iVZ3FfPcUw1NYQCfMoQiH6/source/src/audio/return.mp3");
+let bell = new Audio("./audio/bell.mp3");
+let focusReturn = new Audio("./audio/final.mp3");
+let final = new Audio(".return.mp3");
 
 function start() {
 
