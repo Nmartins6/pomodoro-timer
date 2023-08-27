@@ -3,11 +3,11 @@ let pause = document.getElementById('pause');
 let sessions = document.getElementById('sessions');
 let seconds;
 
-let bell = new Audio("./audio/bell.mp3");
-let focusReturn = new Audio("./audio/final.mp3");
-let final = new Audio("./audio/return.mp3");
-
 function start() {
+
+    let bell = new Audio("./audio/bell.mp3");
+    let focusReturn = new Audio("./audio/final.mp3");
+    let final = new Audio("./audio/return.mp3");
 
     if (action.value == 0) {
         alert("Please specify the number of minutes of focus until the break.");
