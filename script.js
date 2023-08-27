@@ -5,7 +5,7 @@ let seconds;
 
 let bell = new Audio("./audio/bell.mp3");
 let focusReturn = new Audio("./audio/final.mp3");
-let final = new Audio(".return.mp3");
+let final = new Audio("./audio/return.mp3");
 
 function start() {
 
