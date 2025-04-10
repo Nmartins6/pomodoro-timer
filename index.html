@@ -59,19 +59,27 @@
                     <input type="number" id="sections" class="form-control form-control-lg text-center"
                         placeholder="e.g. 4" />
                 </div>
+                <div id="errorMessage" class="alert alert-danger d-none text-center mt-3" role="alert"></div>
             </div>
 
             <div class="text-center my-5">
                 <div id="statusInfo" class="text-center text-light mb-3 d-none">
                     <h4 id="statusText" class="fw-semibold"></h4>
                 </div>
-                <h1 id="timerDisplay" class="display-1 text-light fw-bold">00:00</h1>
+                <div class="circle-container position-relative d-flex justify-content-center align-items-center mx-auto" style="width: 220px; height: 220px;">
+                    <svg class="progress-ring" width="220" height="220">
+                      <circle class="progress-ring__circle-bg" stroke="#444" stroke-width="8" fill="transparent" r="100" cx="110" cy="110"/>
+                      <circle id="progressCircle" class="progress-ring__circle" stroke="#4b5efc" stroke-width="8" fill="transparent" r="100" cx="110" cy="110"/>
+                    </svg>
+                    <h1 id="timerDisplay" class="display-1 fw-bold position-absolute">00:00</h1>
+                  </div>
+                
             </div>
 
             <div class="d-grid">
                 <button onclick="start()" class="btn btn-lg btn-success shadow">Start</button>
-                <button onclick="pause()" class="btn btn-warning btn-lg">Pause</button>
-                <button onclick="restart()" class="btn btn-danger btn-lg">Restart</button </div>
+                <button class="btn btn-warning" onclick="pause()">⏸ Pause</button>
+                <button class="btn btn-secondary" onclick="restart()">🔁 Restart</button>
             </div>
     </main>
 
