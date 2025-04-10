@@ -9,6 +9,39 @@ toggleBtn.addEventListener('click', () => {
     themeIcon.classList.toggle('fa-moon', !isLight);
 });
 
+// Load sounds
+const soundStart = new Audio('audio/lo-fi.mp3');
+const soundBell = new Audio('audio/bell.mp3');
+const soundReturn = new Audio('audio/return.mp3');
+const soundFinal = new Audio('audio/final.mp3');
+
+//functions sounds
+
+const volumeSlider = document.getElementById("volumeSlider");
+volumeSlider.addEventListener("input", () => {
+    soundStart.volume = parseFloat(volumeSlider.value);
+});
+
+const muteBtn = document.getElementById("muteToggle");
+const muteIcon = document.getElementById("muteIcon");
+
+let isMuted = false;
+
+muteBtn.addEventListener("click", () => {
+    isMuted = !isMuted;
+
+    // Atualiza ícone
+    muteIcon.classList.toggle("fa-volume-up", !isMuted);
+    muteIcon.classList.toggle("fa-volume-mute", isMuted);
+
+    // Muda volume de todos os sons
+    const volume = isMuted ? 0 : parseFloat(volumeSlider.value);
+    soundStart.volume = volume;
+    soundBell.volume = isMuted ? 0 : 0.5;
+    soundReturn.volume = isMuted ? 0 : 0.5;
+    soundFinal.volume = isMuted ? 0 : 0.6;
+});
+
 // DOM elements
 const focusInput = document.getElementById("focus");
 const breakInput = document.getElementById("break");
@@ -24,6 +57,7 @@ let currentSection = 1;
 let isFocus = true;
 let timeLeft = 0;
 let intervalId = null;
+let hasStarted = false;
 
 // Show session status
 function setStatus() {
@@ -34,16 +68,19 @@ function setStatus() {
 
 // Start Pomodoro
 function start() {
-    // Clear errors
+
+    if (hasStarted) {
+        startTimer();
+        return;
+    }
+
     hideError();
     removeInvalidClasses();
 
-    // Parse inputs
     focusTime = parseInt(focusInput.value) * 60;
     breakTime = parseInt(breakInput.value) * 60;
     totalSections = parseInt(sectionsInput.value);
 
-    // Validate inputs
     if (isNaN(focusTime) || focusTime <= 0) {
         showError("Focus time must be greater than 0.");
         focusInput.classList.add("is-invalid");
@@ -62,14 +99,15 @@ function start() {
         return;
     }
 
-    // Initialize session
     currentSection = 1;
     isFocus = true;
     timeLeft = focusTime;
 
+    hasStarted = true;
     refreshDisplay();
     setStatus();
     startTimer();
+    soundStart.play();
 }
 
 // Starts the countdown
@@ -77,6 +115,14 @@ function startTimer() {
     if (intervalId) return;
 
     intervalId = setInterval(() => {
+        if (timeLeft === 5 && isFocus) {
+            soundBell.play();
+        }
+
+        if (timeLeft === 5 && !isFocus && currentSection < totalSections) {
+            soundReturn.play();
+        }
+
         if (timeLeft <= 0) {
             clearInterval(intervalId);
             intervalId = null;
@@ -90,6 +136,7 @@ function startTimer() {
                     isFocus = true;
                     timeLeft = focusTime;
                 } else {
+                    soundFinal.play();
                     timerDisplay.innerText = "🎉 Done!";
                     document.title = "Pomodoro Timer";
                     statusText.innerText = "✅ All sections completed!";
@@ -111,26 +158,26 @@ function calculateOffset(circumference) {
     const total = isFocus ? focusTime : breakTime;
     const progress = (total - timeLeft) / total;
     return circumference * (1 - progress);
-  }
+}
 
 function refreshDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     const formatted = `${minutes.toString().padStart(2, '0')}:${seconds
-      .toString()
-      .padStart(2, '0')}`;
-    
+        .toString()
+        .padStart(2, '0')}`;
+
     timerDisplay.innerText = formatted;
     document.title = `${isFocus ? "🔴 Focus" : "🟢 Pause"}: ${formatted}`;
-  
+
     // Atualiza progresso circular
     const circle = document.getElementById("progressCircle");
     const radius = circle.r.baseVal.value;
     const circumference = 2 * Math.PI * radius;
-  
+
     circle.style.strokeDasharray = `${circumference} ${circumference}`;
     circle.style.strokeDashoffset = calculateOffset(circumference);
-  }
+}
 
 // Pause the timer
 function pause() {

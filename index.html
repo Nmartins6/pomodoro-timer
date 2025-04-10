@@ -24,11 +24,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark px-4">
         <a class="navbar-brand fw-bold" href="index.html">Pomodoro Timer</a>
         <div class="ms-auto d-flex gap-3 align-items-center">
-            <button class="btn btn-outline-light btn-sm" title="Pause">
+            <button class="btn btn-outline-light btn-sm" title="Pause" onclick="soundStart.pause()">
                 <i class="fa fa-pause"></i>
             </button>
-            <button class="btn btn-outline-light btn-sm" title="Play">
+            <button class="btn btn-outline-light btn-sm" title="Play" onclick="soundStart.play()">
                 <i class="fa fa-play"></i>
+            </button>
+
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3"
+                title="Volume da música de fundo" style="width: 100px;" />
+
+            <!-- Mute/Unmute -->
+            <button id="muteToggle" class="btn btn-outline-light btn-sm" title="Ativar/desativar som">
+                <i class="fa fa-volume-up" id="muteIcon"></i>
             </button>
 
             <!-- Theme toggle -->
@@ -66,14 +74,17 @@
                 <div id="statusInfo" class="text-center text-light mb-3 d-none">
                     <h4 id="statusText" class="fw-semibold"></h4>
                 </div>
-                <div class="circle-container position-relative d-flex justify-content-center align-items-center mx-auto" style="width: 220px; height: 220px;">
+                <div class="circle-container position-relative d-flex justify-content-center align-items-center mx-auto"
+                    style="width: 220px; height: 220px;">
                     <svg class="progress-ring" width="220" height="220">
-                      <circle class="progress-ring__circle-bg" stroke="#444" stroke-width="8" fill="transparent" r="100" cx="110" cy="110"/>
-                      <circle id="progressCircle" class="progress-ring__circle" stroke="#4b5efc" stroke-width="8" fill="transparent" r="100" cx="110" cy="110"/>
+                        <circle class="progress-ring__circle-bg" stroke="#444" stroke-width="8" fill="transparent"
+                            r="100" cx="110" cy="110" />
+                        <circle id="progressCircle" class="progress-ring__circle" stroke="#4b5efc" stroke-width="8"
+                            fill="transparent" r="100" cx="110" cy="110" />
                     </svg>
                     <h1 id="timerDisplay" class="display-1 fw-bold position-absolute">00:00</h1>
-                  </div>
-                
+                </div>
+
             </div>
 
             <div class="d-grid">
