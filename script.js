@@ -10,10 +10,10 @@ toggleBtn.addEventListener('click', () => {
 });
 
 // Load sounds
-const soundStart = new Audio('audio/lo-fi.mp3');
-const soundBell = new Audio('audio/bell.mp3');
-const soundReturn = new Audio('audio/return.mp3');
-const soundFinal = new Audio('audio/final.mp3');
+const soundStart = new Audio('./audio/lo-fi.mp3');
+const soundBell = new Audio('./audio/bell.mp3');
+const soundReturn = new Audio('./audio/return.mp3');
+const soundFinal = new Audio('./audio/final.mp3');
 
 //functions sounds
 
@@ -30,11 +30,9 @@ let isMuted = false;
 muteBtn.addEventListener("click", () => {
     isMuted = !isMuted;
 
-    // Atualiza ícone
     muteIcon.classList.toggle("fa-volume-up", !isMuted);
     muteIcon.classList.toggle("fa-volume-mute", isMuted);
 
-    // Muda volume de todos os sons
     const volume = isMuted ? 0 : parseFloat(volumeSlider.value);
     soundStart.volume = volume;
     soundBell.volume = isMuted ? 0 : 0.5;
