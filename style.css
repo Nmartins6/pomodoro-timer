@@ -1,41 +1,111 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+/* === GENERAL STYLES === */
 
-input {
-    width: 150px !important;
-    height: 150px !important;
-    font-size: 50pt !important;
-    text-align: center;
-}
+body {
+    background-color: #1e1e2f !important; /* Dark background */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* === NAVBAR === */
+  
+  .navbar {
+    background-color: #29293d !important; /* Dark navbar */
+  }
+  
+  .light-mode .navbar {
+    background-color: #ffffff !important; /* Light navbar */
+  }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.timer {
-    color: #fff;
-    text-align: center;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto !important;
-}
-
-h2 {
-    font-size: 90px !important;
-}
-
-#timer {
-    display: none !important;
-}
-
-#end {
-    color: #fff;
-}
+  .light-mode .navbar a {
+    color: #444 !important;
+  }
+  
+  /* === CARDS AND CONTAINERS === */
+  
+  .card,
+  .form-group,
+  .input-group {
+    background-color: #2c2c3e !important;   /* Slightly lighter than body */
+    border: 1px solid #3e3e5c !important;
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .light-mode .card,
+  .light-mode .form-group,
+  .light-mode .input-group {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-color: #dee2e6 !important;
+  }
+  
+  /* === FORM INPUTS === */
+  
+  .form-control {
+    background-color: #1e1e2f !important;
+    color: #f1f1f1 !important;
+    border: 1px solid #444 !important;
+  }
+  
+  .form-control::placeholder {
+    color: #aaa !important; /* Lighter placeholder for dark mode */
+  }
+  
+  .light-mode .form-control {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-color: #ced4da !important;
+  }
+  
+  .light-mode .form-control::placeholder {
+    color: #6c757d !important;
+  }
+  
+  /* === BUTTONS === */
+  
+  .btn-outline-light {
+    color: #f1f1f1 !important;
+    border-color: #f1f1f1 !important;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: #444 !important;
+    color: #fff !important;
+  }
+  
+  .light-mode .btn-outline-light {
+    border-color: #6c757d !important;
+    color: #6c757d !important;
+  }
+  
+  .light-mode .btn-outline-light:hover {
+    background-color: #e2e6ea !important;
+    color: #000 !important;
+  }
+  
+  .btn-primary {
+    background-color: #4b5efc !important;
+    border-color: #4b5efc !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #3e4edb !important;
+    border-color: #3e4edb !important;
+  }
+  
+  /* === THEME TOGGLE BUTTON === */
+  
+  .theme-toggle {
+    cursor: pointer !important;
+    border: none !important;
+    background: transparent !important;
+    color: inherit !important;
+  }
+  
+  /* === LIGHT MODE OVERRIDES === */
+  
+  .light-mode {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+  }
+  
+  
