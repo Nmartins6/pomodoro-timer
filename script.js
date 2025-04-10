@@ -66,7 +66,7 @@ function setStatus() {
 
 // Start Pomodoro
 function start() {
-
+    console.log(soundStart)
     if (hasStarted) {
         startTimer();
         return;
