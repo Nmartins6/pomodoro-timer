@@ -10,10 +10,10 @@ toggleBtn.addEventListener('click', () => {
 });
 
 // Load sounds
-const soundStart = new Audio('/public/audio/lo-fi.mp3');
-const soundBell = new Audio('/public/audio/bell.mp3');
-const soundReturn = new Audio('/public/audio/return.mp3');
-const soundFinal = new Audio('/public/audio/final.mp3');
+const soundStart = new Audio('/audio/lo-fi.mp3');
+const soundBell = new Audio('/audio/bell.mp3');
+const soundReturn = new Audio('/audio/return.mp3');
+const soundFinal = new Audio('/audio/final.mp3');
 
 //functions sounds
 
