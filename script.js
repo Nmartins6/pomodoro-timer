@@ -1,8 +1,10 @@
-// inputs
+// inputs and elements
 const focusInput = document.getElementById("focus");
 const breakInput = document.getElementById("break");
 const sectionsInput = document.getElementById("sections");
 const timerDisplay = document.getElementById("timerDisplay");
+const statusInfo = document.getElementById("statusInfo");
+const statusText = document.getElementById("statusText");
 
 // global
 let focusTime, breakTime, totalSections;
@@ -10,6 +12,12 @@ let currentSection = 1;
 let isFocus = true;
 let timeLeft = 0;
 let intervalId = null;
+
+function setStatus() {
+    statusInfo.classList.remove("d-none");
+    const type = isFocus ? "🔴 Focus" : "🟢 Pause";
+    statusText.innerText = `${type} — Section ${currentSection} of ${totalSections}`;
+  }
 
 // start pomodoro
 function start() {
@@ -27,6 +35,7 @@ function start() {
   timeLeft = focusTime;
 
   refreshDisplay();
+  setStatus();
   startTimer();
 }
 
@@ -50,6 +59,7 @@ function startTimer() {
         } else {
           timerDisplay.innerText = "🎉 Done!";
           document.title = "Pomodoro Timer";
+          statusText.innerText = "✅ section done";
           return;
         }
       }
@@ -70,7 +80,7 @@ function refreshDisplay() {
     .toString()
     .padStart(2, '0')}`;
   timerDisplay.innerText = formatted;
-  document.title = `${isFocus ? "Focus" : "Pause"}: ${formatted}`;
+  document.title = `${isFocus ? "🔴 Focus" : "🟢 Pause"}: ${formatted}`;
 }
 
 // pause Timer
